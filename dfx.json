@@ -4,7 +4,7 @@
             "frontend": {
                 "entrypoint": "src/public/index.html"
             },
-            "source": ["src/public"],
+            "source": ["src/public", "node_modules"],
             "type": "assets"
         }
     },
