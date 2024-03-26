@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/SignUp</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body class="font-Poppins bg-cover bg-[url('./img/layered-peaks-bg.svg')]">
+
+  <nav class="fixed top-0 left-0 w-full px-6 lg:px-28 py-4 bg-customBlack z-50 shadow-xl">
+		<div class="flex justify-between items-center">
+			<!-- Logo on the left side -->
+			<a href="index.html#home" class="flex items-start">
+					<img src="./img/qm-logo-only.png" alt="" class="hidden lg:flex xl:flex h-14 xl:h-16">
+					<img src="./img/qm-logo-h.png" alt="" class="lg:hidden xl:hidden h-8">
+			</a>
+
+			<!-- Sidebar -->
+			<div class="navbar-menu relative hidden" id="nav-side">
+				<div class="navbar-backdrop fixed inset-0 bg-gray-900 opacity-25"></div>
+				<div class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto font-Poppins animate-fade-right">
+					<div class="flex justify-between items-center mt-2 p-4">
+							<a href="index.html"><img src="./img/qm-logo.png" alt="" class="h-20"></a>
+							<img src="./img/close.png" alt="" class="navbar-close h-4 cursor-pointer">
+					</div>
+
+					<div class="mt-auto">
+							<ul>
+									<li class="mb-1"><a href="index.html#home" class="block p-4 text-sm font-semibold text-customBlack  hover:bg-blue-50 hover:text-customBlue hover:border-r-4 hover:border-customBlue rounded-lg">Home</a></li>
+									<li class="mb-1"><a href="index.html#features" class="block p-4 text-sm font-semibold text-customBlack hover:bg-blue-50 hover:text-customBlue hover:border-r-4 hover:border-customBlue rounded-lg">Features</a></li>
+									<li class="mb-1"><a href="index.html#about" class="block p-4 text-sm font-semibold text-customBlack hover:bg-blue-50 hover:text-customBlue hover:border-r-4 hover:border-customBlue rounded-lg">About</a></li>
+									<li class="mb-1"><a href="index.html#faqs" class="block p-4 text-sm font-semibold text-customBlack hover:bg-blue-50 hover:text-customBlue hover:border-r-4 hover:border-customBlue rounded-lg">FAQs</a></li>
+								</ul>
+					</div>
+
+					<div class="mt-auto">
+							<div class="pt-6">
+									<a class="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-gray-200 hover:bg-gray-300 rounded-xl" href="login-page.html">Log in</a>
+									<a class="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700 rounded-xl cursor-pointer" id="signupButton-side">Sign Up</a>
+							</div>
+					</div>
+
+					<div class="mt-auto">
+						<p class="text-center text-xs mt-auto">Copyright &copy; 2024. All rights reserved | Developed by <span href="" class="font-bold hover:text-customBlue transition duration-300 ease-in-out">AzTechTitans</span></p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Menu in the middle -->
+			<ul class="hidden lg:flex justify-center text-md text-white font-bold">
+					<li class="px-6 hover:text-customBlue">
+						<a href="index.html#home" class="link link-underline link-underline-black py-2">Home</a>
+					</li>
+					<li class="px-6 hover:text-customBlue">
+						<a href="index.html#features" class="link link-underline link-underline-black py-2">Features</a>
+					</li>
+					<li class="px-6 hover:text-customBlue">
+						<a href="index.html#about" class="link link-underline link-underline-black py-2">About</a>
+					</li>
+					<li class="px-6 hover:text-customBlue">
+						<a href="index.html#faqs" class="link link-underline link-underline-black py-2">FAQs</a>
+					</li>
+			</ul>
+
+			<!-- Burger icon -->
+			<img src="./img/burger-bar.png" alt="" class="navbar-burger h-6 lg:hidden xl:hidden cursor-pointer">
+
+			<!-- Buttons on the right side -->
+			<div class="hidden lg:flex justify-center">
+				<a class="lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 text-md text-white hover:text-customBlue font-bold transition duration-200" href="login-page.html">Log In</a>
+				<a class="lg:inline-block py-2 px-6 bg-blue-600 hover:bg-blue-700 text-md text-white font-bold rounded-xl transition duration-200 cursor-pointer" id="signupButton">Sign up</a>
+			</div>
+		</div>
+  </nav>
+
+<!-- Login Form -->
+<main class="flex justify-center items-center h-screen mt-1" id="loginForm">
+  <div class="bg-white p-7 w-11/12 sm:w-2/3 md:w-2/3 lg:w-1/2 xl:w-1/3 overflow-auto rounded-2xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]">
+    <header>
+      <h1 class="text-3xl font-bold pb-1">Hello There 👋</h1>
+      <p class="text-base pb-5 break-normal text-justify">Welcome to Quiz Master! Challenge yourself with a variety of topics and enjoy an engaging quiz-taking experience. Explore, learn, and have fun testing your knowledge!</p>
+    </header>
+    
+    <form id="loginForm" class="flex justify-center items-center" method="POST">
+      <div>
+        <label for="login-email" class="font-bold transition duration-300">Email</label>
+        <span class="text-customRed font-bold text-xs pl-3 hidden">email is required</span>
+        <input type="email" name="login-email" class="block border-2 border-solid focus:outline-[#0196df] border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full sm:w-96 h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" required>
+
+        <label for="login-password" class="font-bold">Password</label>
+        <span id="sample" class="text-customRed font-bold text-xs pl-3 hidden">password is required</span>
+        <input type="password" name="login-password" class="block border-2 border-solid focus:outline-customBlue border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full sm:w-96 h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" required>
+        <span id = "password-error"></span>
+
+        <button class="w-full sm:w-96 h-10 bg-customBlue rounded-3xl text-white font-bold tracking-wide hover:opacity-90 transition duration-300 ease-in-out">Login</button>
+      </div>
+    </form>
+
+    <div class="relative">
+      <hr class="border-1 border-black rounded-full text-center mt-4 opacity-20">
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold">or</div>
+    </div>
+      
+    <div class="flex justify-center items-center">
+      <p class="mt-4 text-center">Don't have an account? <button id="registerButton" class="text-customBlue font-bold hover:underline transition duration-300 ease-in-out focus:outline-none"> Register </button></p>
+    </div>
+    
+    <footer class="flex justify-center items-center mt-2">
+      <p class="text-center text-xs">Copyright &copy; 2024. All rights reserved | Developed by <span href="" class="font-bold hover:text-customBlue transition duration-300 ease-in-out">AzTechTitans</span></p>
+    </footer>   
+  </div>
+</main>
+
+<!-- Register Form -->
+<div class="hidden mt-16 lg:mt-12" id="registerForm"> <!--hidden-->
+  <main class="flex justify-center items-center min-h-screen py-10">
+    <div class="bg-white p-7 w-11/12 sm:w-2/3 md:w-2/3 lg:w-1/2 xl:w-1/3 overflow-auto rounded-2xl shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]">
+      <header class="text-center">
+        <h1 class="text-3xl font-bold pb-1">Register</h1>
+      </header>
+      
+      <form class="flex justify-center items-center" method="POST">
+        <div>
+          <div class="block text-center mt-4">
+            <label for="label-select" class="font-bold transition duration-300">Select User Type: </label>
+            <select name="user-type" id="user-type" required>
+              <option selected value="teacher">Teacher</option>
+              <option value="student">Student</option>
+            </select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-4">
+            <div>
+              <label for="label-first-name" class="inline-block font-bold transition duration-300 mt-2">First Name:</label>
+              <span id="Firstname" class="text-customRed font-bold text-xs pl-2 hidden">enter a valid first name</span>
+              <input type="text" name="first-name" class="inline-block border-2 border-solid focus:outline-[#0196df] border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" placeholder="Juan" required>
+            </div>
+            <div>
+              <label for="label-last-name" class="inline-block font-bold transition duration-300 mt-2">Last Name:</label>
+              <span id="Lastname" class="text-customRed font-bold text-xs pl-2 hidden">enter a valid last name</span>
+              <input type="text" name="last-name" class="inline-block border-2 border-solid focus:outline-[#0196df] border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" placeholder="Matamad" required>
+            </div>
+          </div>   
+          
+          <label for="label-email" class="font-bold transition duration-300">Email: </label>
+          <input type="email" name="register-email" class="block border-2 border-solid focus:outline-[#0196df] border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" placeholder="juanmatamad@gmail.com" required>
+          
+          <label for="label-username" class="font-bold transition duration-300 mt-2">Username:</label>
+          <input type="text" name="register-username" class="block border-2 border-solid focus:outline-[#0196df] border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" placeholder="j.matamad" required>
+
+          <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-x-4">
+            <div>
+              <label for="label-password" class="inline-block font-bold transition duration-300">Password:</label>
+              <span id="Passwordchecker" class="text-customRed font-bold text-xs pl-2 hidden">password cannot be less than 8 characters</span>
+              <input type="password" name="register-password" class="inline-block border-2 border-solid focus:outline-customBlue border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" required>
+            </div>
+
+            <div>
+              <label for="label-cpassword" class="inline-block font-bold transition duration-300">Confirm Password:</label>
+              <span id="ConfirmPasswordchecker" class="text-customRed font-bold text-xs pl-2 hidden ">password do not match</span>
+              <input type="password" name="register-cpassword" class="inline-block border-2 border-solid focus:outline-customBlue border-gray-300 mb-4 text-lg hover:border-customBlue box-border w-full h-10 p-3 mt-1 transition duration-300 ease-in-out rounded" required>
+            </div>
+          </div>
+          
+          <button class="w-full h-10 bg-customBlue rounded-3xl text-white font-bold tracking-wide hover:opacity-90 transition duration-300 ease-in-out">Signup</button>
+        </div>
+      </form>
+
+      <div class="relative">
+        <hr class="border-1 border-black rounded-full text-center mt-4 opacity-20">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold">or</div>
+      </div>
+      
+      <div class="flex justify-center items-center">
+        <p class="mt-4 text-center">Already have an account? <button id="loginButton" class="text-customBlue font-bold hover:underline transition duration-300 ease-in-out focus:outline-none"> Login </button></p>
+      </div>
+      
+      <footer class="flex justify-center items-center mt-2">
+        <p class="text-center text-sm">Copyright &copy; 2024. All rights reserved | Developed by <span href="" class="font-bold hover:text-customBlue transition duration-300 ease-in-out">AzTechTitans</span></p>
+      </footer>   
+    </div>
+  </main>
+</div>
+<script>
+  // Wait for the DOM content to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Select the login form and register form
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+
+    // Check if the URL contains a specific parameter indicating that the register form should be shown
+    const urlParams = new URLSearchParams(window.location.search);
+    const showRegisterForm = urlParams.get('showRegister');
+
+    // If the parameter is present and set to "true", show the register form and hide the login form
+    if (showRegisterForm === 'true') {
+        loginForm.classList.add('hidden');
+        registerForm.classList.remove('hidden');
+    }
+});
+
+</script>
+<script src="login-signup.js"></script>
+<script src="home-page.js"></script>
+</body>
+</html>

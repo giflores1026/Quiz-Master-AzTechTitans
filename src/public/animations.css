@@ -1,0 +1,250 @@
+/* Define the keyframes */
+@keyframes fadeRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Apply the animation */
+.animate-fade-right {
+  animation-name: fadeRight;
+  animation-duration: 50ms; /* Specified duration */
+  animation-timing-function: ease-in-out;
+}
+
+
+/* Define the keyframes */
+@keyframes jumpIn {
+  0% {
+      transform: scale(0.8);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* Apply the animation */
+.animate-jump-in {
+  animation-name: jumpIn;
+  animation-duration: 2500ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards; /* Ensures the element stays in its final state */
+}
+
+/* Define the keyframes */
+@keyframes pulse {
+  0% {
+      transform: scale(0.9);
+  }
+  50% {
+      transform: scale(1);
+  }
+  100% {
+      transform: scale(0.9);
+  }
+}
+
+/* Apply the animation */
+.animate-pulse {
+  animation-name: pulse;
+  animation-duration: 3000ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+/* Define the keyframes */
+@keyframes wiggle {
+  0% {
+      transform: rotate(-5deg);
+  }
+  50% {
+      transform: rotate(5deg);
+  }
+  100% {
+      transform: rotate(-5deg);
+  }
+}
+
+/* Apply the animation */
+.animate-wiggle {
+  animation-name: wiggle;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fadeRight {
+  0% {
+      opacity: 0;
+      transform: translateX(-20px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}
+
+/* Apply the animation */
+.animate-fade-right {
+  animation-name: fadeRight;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
+}
+
+/* Define the keyframes */
+@keyframes bounce {
+  0% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-20px);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
+/* Apply the animation */
+.animate-bounce {
+  animation-name: bounce;
+  animation-duration: 1000ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes wiggle-more {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+  100% { transform: rotate(0); }
+}
+
+.animate-wiggle-more {
+  animation: wiggle-more 1500ms ease-in-out 2; /* Three iterations */
+}
+
+/* Apply the animation only once */
+.animate-once {
+  animation-iteration-count: 1;
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(#e53f6e, #e53f6e);
+  background-size: 0 3px;
+  background-position: 50% 100%; /* Start from the center */
+  background-repeat: no-repeat;
+  transition: background-size .5s ease-in-out;
+}
+
+.link-underline:hover {
+  background-size: 100% 3px;
+  background-position: 50% 100%; /* Start from the center */
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+.card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+.card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+.card:hover:before,
+.card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate),
+    #5ddcff,
+    #3c67e3 43%,
+    #4e00c2
+  );
+  opacity: 1;
+  transition: opacity 0.5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.slide-right {
+  transition: transform 0.3s ease-out; /* Adjust timing and easing as needed */
+  transform: translateX(0); /* Initial position */
+}
+
+.slide-right.hidden {
+  transform: translateX(100%); /* Slide the menu to the right */
+}
+
+

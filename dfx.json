@@ -1,0 +1,19 @@
+{
+    "canisters": {
+        "Quiz_Master_AzTechTitans": {
+            "frontend": {
+                "entrypoint": "src/public/index.html"
+            },
+            "source": ["src"],
+            "type": "assets"
+        }
+    },
+    "dfx": "0.17.0",
+    "version": 1,
+    "networks": {
+        "local": {
+            "bind": "0.0.0.0:8000",
+            "type": "ephemeral"
+        }
+    }
+}
